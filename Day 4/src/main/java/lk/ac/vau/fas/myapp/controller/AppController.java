@@ -80,7 +80,7 @@ public class AppController {
 	@PostMapping("/add")
 	public String addStudent(@RequestBody Student student) {
 		mstudents.put(student.getRegNo(),student);
-		return "New student added";
+		return "New syudent added";
 	}
 
     //Delete the student
@@ -89,6 +89,16 @@ public class AppController {
 		if(mstudents.remove(regno)!=null) {
 			mstudents.remove(regno);
 			return "The student removed";
+		}
+		return "404 coudn't find the student";
+	}
+
+    //Update the student
+	@PutMapping("/student/{id}")
+	public String UpdateStudent(@PathVariable("id") String regno, @RequestBody Student student) {
+		if(mstudents.get(regno)!=null) {
+			mstudents.put(student.getRegNo(),student);
+			return "The student details are updated";
 		}
 		return "404 coudn't find the student";
 	}
