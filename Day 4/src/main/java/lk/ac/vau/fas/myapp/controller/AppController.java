@@ -37,7 +37,7 @@ public class AppController {
 		mstudents.put(Nimal.getRegNo(),Nimal);
     }
 
-    @GetMapping("msg")
+    /*@GetMapping("msg")
     public String myMessage() {
         return "Hello SpringBoot";
     }
@@ -61,7 +61,7 @@ public class AppController {
 		students.add(Amal);
 		students.add(Nimal);
 		return students;
-	}
+	}*/
     public Map<String,Student> getStudents(){
 		return mstudents;
 	}
@@ -76,6 +76,13 @@ public class AppController {
         return mstudents.get(regno);
 		//return null;
     }
+    //Add a new Student
+	@PostMapping("add")
+	public String addStudent(@RequestBody Student student) {
+		mstudents.put(student.getRegNo(),student);
+		return "New student added";
+	}
+    /* 
     //find the students whose age is between 20 and 23
     @GetMapping("/students/age")
     public List<Student> getStudentsByAgeRange() {
@@ -125,6 +132,7 @@ public class AppController {
             }
         }
         return "Student with regNo " + regNo + " not found."; 
+        
     }
-
+*/
 }
