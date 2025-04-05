@@ -7,6 +7,7 @@ import lk.ac.vau.fas.myapp.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,10 @@ public class AppController {
         students.add(Bob);
         students.add(Amal);
         students.add(Nimal);
+
+        mstudents.put(Bob.getRegNo(),Bob);
+		mstudents.put(Amal.getRegNo(),Amal);
+		mstudents.put(Nimal.getRegNo(),Nimal);
     }
 
     @GetMapping("msg")
