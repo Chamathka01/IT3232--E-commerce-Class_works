@@ -27,7 +27,7 @@ public class AppController {
 	Student Amal = new Student("2020IT02","Amal Perera",24,"AMC",3.7);
 	Student Nimal = new Student("2020IT03","Nimal Hettiarachchi",22,"IT",3.0);
     private static List<Student> students = new ArrayList<Student>();
-    private Map<String, Student> mstudents = new hashMap<String,Student>();
+    private Map<String, Student> mstudents = new HashMap<String,Student>();
 
     public AppController() {
         students.add(Bob);
