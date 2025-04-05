@@ -77,10 +77,20 @@ public class AppController {
 		//return null;
     }
     //Add a new Student
-	@PostMapping("add")
+	@PostMapping("/add")
 	public String addStudent(@RequestBody Student student) {
 		mstudents.put(student.getRegNo(),student);
 		return "New student added";
+	}
+
+    //Delete the student
+	@DeleteMapping("/student/{id}")
+	public String DeleteStudent(@PathVariable("id") String regno) {
+		if(mstudents.remove(regno)!=null) {
+			mstudents.remove(regno);
+			return "The student removed";
+		}
+		return "404 coudn't find the student";
 	}
     /* 
     //find the students whose age is between 20 and 23
