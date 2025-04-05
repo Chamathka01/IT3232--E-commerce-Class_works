@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lk.ac.vau.fas.myapp.model.Student;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import lk.ac.vau.fas.myapp.model.Student;
 
 @RestController
 @RequestMapping("/app")
@@ -67,7 +69,7 @@ public class AppController {
 	}
     //find a student from the list by regno
     @GetMapping("/student/{id}")
-	public Student getStudent(@PathVariable("id") String regNo) {
+	public Student getStudent(@PathVariable("id") String regno) {
 		/*for(Student student : students) {
 			if(student.getRegNo().equals(regNo)) {
 				return student;
