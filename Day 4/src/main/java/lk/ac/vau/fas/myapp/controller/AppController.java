@@ -62,6 +62,9 @@ public class AppController {
 		students.add(Nimal);
 		return students;
 	}
+    public Map<String,Student> getStudents(){
+		return mstudents;
+	}
     //find a student from the list by regno
     @GetMapping("/student/{id}")
 	public Student getStudent(@PathVariable("id") String regNo) {
