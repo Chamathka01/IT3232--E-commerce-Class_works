@@ -68,12 +68,13 @@ public class AppController {
     //find a student from the list by regno
     @GetMapping("/student/{id}")
 	public Student getStudent(@PathVariable("id") String regNo) {
-		for(Student student : students) {
+		/*for(Student student : students) {
 			if(student.getRegNo().equals(regNo)) {
 				return student;
 			}
-		}	
-		return null;
+		}	*/
+        return mstudents.get(regno);
+		//return null;
     }
     //find the students whose age is between 20 and 23
     @GetMapping("/students/age")
