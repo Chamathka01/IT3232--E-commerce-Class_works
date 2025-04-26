@@ -1,4 +1,4 @@
-# IT3232_Day-04_Spring-Boot
+# IT3232_Day-07_Spring-Boot
 
 # University Management System
 
