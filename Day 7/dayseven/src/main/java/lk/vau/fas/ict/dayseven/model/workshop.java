@@ -14,7 +14,7 @@ public class workshop {
 	private Date start_date;
 	
 	
-	public Workshop(int id, String description, Date end_date, String name, Date start_date) {
+	public workshop(int id, String description, Date end_date, String name, Date start_date) {
 		super();
 		this.id = id;
 		this.description = description;
