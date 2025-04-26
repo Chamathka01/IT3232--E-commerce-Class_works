@@ -1,8 +1,10 @@
 package lk.vau.fas.ict.dayseven.model;
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class workshop {
@@ -12,6 +14,14 @@ public class workshop {
 	private Date end_date;
 	private String name;
 	private Date start_date;
+
+    @ManyToMany
+    private List<under_graduate>undergraduates;
+
+    @ManyToMany
+    private List<post_graduate>postgraduates;
+
+
 	
 	
 	public workshop(int id, String description, Date end_date, String name, Date start_date) {
@@ -72,4 +82,26 @@ public class workshop {
 	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
+
+
+    public List<under_graduate> getUndergraduates() {
+        return undergraduates;
+    }
+
+
+    public void setUndergraduates(List<under_graduate> undergraduates) {
+        this.undergraduates = undergraduates;
+    }
+
+
+    public List<post_graduate> getPostgraduates() {
+        return postgraduates;
+    }
+
+
+    public void setPostgraduates(List<post_graduate> postgraduates) {
+        this.postgraduates = postgraduates;
+    }
+
+
 }
