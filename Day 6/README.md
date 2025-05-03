@@ -2,28 +2,51 @@
 
 # 🧾 Employee Management System
 
-# 📌 Introduction
+## 📌 Introduction
 
 The **Employee Management System** is designed to simulate a real-world enterprise database environment by showcasing how different entities (such as departments, employees, and projects) are interrelated in an organization. This project focuses on data modeling using JPA annotations and database integration using Spring Boot and MySQL.
 
 ---
 
-# 🏗️ Project Structure
+## 🏗️ Project Structure
 
 1. **Department.java**
-This class contains three fields: id (a unique identifier marked with @Id and @Column(name="dept_id")), name (which cannot be null), and established (a Date indicating when the department was founded). The department is associated with multiple employees using a one-to-many relationship. This is defined by the @OneToMany(mappedBy="department") annotation, which means that the Employee entity contains the foreign key and maintains the relationship. In simple terms, each department can have many employees.
+
+-This class contains three fields: id (a unique identifier marked with @Id and @Column(name="dept_id")), name (which cannot be null), and established (a Date indicating when the department was founded).
+
+-The department is associated with multiple employees using a one-to-many relationship. This is defined by the @OneToMany(mappedBy="department") annotation, which means that the Employee entity contains the foreign key and maintains the relationship. In simple terms, each department can have many employees.
 
 2. **Employee.java**
-The Employee class represents an individual working in the organization. It is also marked with @Entity and contains fields for empNo (employee number, which serves as the primary key), name, age, gender, and salary. Each employee is associated with a single department, which is expressed using a @ManyToOne relationship. This means that many employees can belong to one department. Additionally, employees can work on multiple projects, and projects can include multiple employees, so a @ManyToMany(mappedBy="employees") relationship is used to link them to the Project entity. Lastly, an employee can have one insurance policy. Although the current code places the @OneToOne annotation in the Insurance entity, logically this is a one-to-one relationship between Employee and Insurance, where each employee has at most one insurance record.
+
+-The Employee class represents an individual working in the organization. 
+
+-It is also marked with @Entity and contains fields for empNo (employee number, which serves as the primary key), name, age, gender, and salary. 
+
+-Each employee is associated with a single department, which is expressed using a @ManyToOne relationship. This means that many employees can belong to one department.
+
+-Additionally, employees can work on multiple projects, and projects can include multiple employees, so a @ManyToMany(mappedBy="employees") relationship is used to link them to the Project entity.
+
+-Lastly, an employee can have one insurance policy. This is a one-to-one relationship between Employee and Insurance, where each employee has at most one insurance record.
 
 3. **Insurance.java**
-The Insurance class represents an insurance policy held by an employee. This entity includes an id (marked with @Id and @Column(name="Insurance_id")) and a type field (marked with @Column(name="Insurance_type")) . The class uses a @OneToOne annotation to represent a one-to-one relationship with the Employee entity. This means that each insurance record is associated with exactly one employee, and each employee has one insurance record.
+
+-The Insurance class represents an insurance policy held by an employee.
+
+-This entity includes an id (marked with @Id and @Column(name="Insurance_id")) and a type field (marked with @Column(name="Insurance_type")) . 
+
+-The class uses a @OneToOne annotation to represent a one-to-one relationship with the Employee entity. This means that each insurance record is associated with exactly one employee, and each employee has one insurance record.
 
 4. **Project.java**
-The Project class models a business project within the company. It is a JPA entity containing the fields id (primary key), name, and totalcost. Projects are associated with employees through a many-to-many relationship, represented by @ManyToMany. This implies that one project can involve many employees, and one employee can participate in many different projects. In the Project class, this relationship is the owning side and does not use mappedBy, which allows it to define the join table for the connection between projects and employees.
+
+-The Project class models a business project within the company.
+
+-It is a JPA entity containing the fields id (primary key), name, and totalcost.
+
+-Projects are associated with employees through a many-to-many relationship, represented by @ManyToMany.In the Project class, this relationship is the owning side and does not use mappedBy, which allows it to define the join table for the connection between projects and employees.
+
 ---
 
-# 💡 Code Structure
+## 💡 Code Structure
 
 ```java
 package lk.vau.fas.ict.daysix.model;
@@ -123,8 +146,18 @@ public class Project {
 
 ```
 ---
+## ⚙️ Application Configuration
+```
+spring.application.name=daysix
+spring.datasource.url=jdbc:mysql://localhost:3306/employee
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=create
+```
+---
 
-# 🛠 Technologies
+## 🛠 Technologies
 - Java 
 
 - Spring Boot 
@@ -141,7 +174,7 @@ public class Project {
 
 ---
 
-# 🔑 Features
+## 🔑 Features
 - Manage Employee information (name, age, gender, salary, etc.)
 
 - Assign Employees to a Department
@@ -158,7 +191,7 @@ public class Project {
 
 ---
 
-🔗 Entity Relationships
+## 🔗 Entity Relationships
 
 | Entity     | Relationship Type | Target Entity | Description                                   |
 | ---------- | ----------------- | ------------- | --------------------------------------------- |
@@ -170,23 +203,13 @@ public class Project {
 | Insurance  | One-to-One        | Employee      | Each insurance policy belongs to one employee |
 
 ---
-⚙️ Application Configuration
-```
-spring.application.name=daysix
-spring.datasource.url=jdbc:mysql://localhost:3306/employee
-spring.datasource.username=root
-spring.datasource.password=
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.hibernate.ddl-auto=create
-```
----
-🚀 How to Run
+## 🚀 How to Run
 
 1.Ensure MySQL server is running and a database named employee exists.
 
 2.Clone the repository.
 
-3.Open the project in your IDE (e.g., IntelliJ, Eclipse).
+3.Open the project in your IDE.
 
 4.Update application.properties with your DB credentials.
 
