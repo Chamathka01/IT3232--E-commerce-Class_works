@@ -181,7 +181,7 @@ public class CRUDController<K,T> {
 ## Outputs
 
 ### 1. Get all courses
-![all](./id.png)
+![all](./all.png)
 
 ### 2. Add a course
 ![add](./add.png)
