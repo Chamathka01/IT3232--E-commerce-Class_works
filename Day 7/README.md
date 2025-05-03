@@ -45,7 +45,7 @@ each table.
 ![1](./dayseven/1.png)
 ![2](./dayseven/2.png)
 ![3](./dayseven/3.png)
-![4](./dayseven/4.pngg)
+![4](./dayseven/4.png)
 ![5](./dayseven/5.png)
 ![6](./dayseven/6.png)
 ![7](./dayseven/7.png)
