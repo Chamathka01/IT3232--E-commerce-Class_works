@@ -35,5 +35,17 @@ public class CRUDController<K,T> {
 		return "404 couldn't find the object";
 		
 	}
+
+    //update 
+	@PutMapping("/update/{id}")
+    public String updateOne(@PathVariable("id") K id, @RequestBody T objects) 
+	{
+		 if(this.object.get(id) != null)
+		 {
+            this.object.put(id, objects);
+            return "The details are updated";
+        }
+        return "404 couldn't find the object";
+    }
     
 }
