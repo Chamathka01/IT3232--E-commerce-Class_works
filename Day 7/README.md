@@ -42,7 +42,7 @@ each table.
 ---
 ## Outputs
 
-![a](./dayseven/1.png)
+![1](./dayseven/1.png)
 ![b](./2.png)
 ![c](./3.png)
 ![d](./4.png)
