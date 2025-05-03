@@ -1,55 +1,204 @@
-# IT3232_Day-07_Spring-Boot
+# IT3232_Day-06_Spring-Boot
 
-# University Management System
+# 🧾 Employee Management System
 
-# 📝 Question
-The University of Vavuniya administration needs a workshop management system to manage the events efficiently. The technical requirement committee decided to use Spring Boot and  MySQL for the system development. The system has been divided into components and assigned to each 3rd year IT student. 
-You have been assigned to a task “Model Building”. The following requirements are given to create proper models and, migrate them to a database using proper ORM techniques. 
+# 📌 Introduction
 
-” The university is arranging many workshops for undergraduates and postgraduates. A workshop contains many presentation sessions done by experts in the field. A session can be presented by many experts. An expert can present for multiple sessions. Mostly, graduates participate in many sessions of the workshops. A sample data file is given to have more understanding of the attributes and data types.”
+The **Employee Management System** is designed to simulate a real-world enterprise database environment by showcasing how different entities (such as departments, employees, and projects) are interrelated in an organization. This project focuses on data modeling using JPA annotations and database integration using Spring Boot and MySQL.
 
-After the migration, take a backup of the generated database and display the description of 
-each table.
+---
 
+# 🏗️ Project Structure
+
+1. **Department.java**
+This class contains three fields: id (a unique identifier marked with @Id and @Column(name="dept_id")), name (which cannot be null), and established (a Date indicating when the department was founded). The department is associated with multiple employees using a one-to-many relationship. This is defined by the @OneToMany(mappedBy="department") annotation, which means that the Employee entity contains the foreign key and maintains the relationship. In simple terms, each department can have many employees.
+
+2. **Employee.java**
+The Employee class represents an individual working in the organization. It is also marked with @Entity and contains fields for empNo (employee number, which serves as the primary key), name, age, gender, and salary. Each employee is associated with a single department, which is expressed using a @ManyToOne relationship. This means that many employees can belong to one department. Additionally, employees can work on multiple projects, and projects can include multiple employees, so a @ManyToMany(mappedBy="employees") relationship is used to link them to the Project entity. Lastly, an employee can have one insurance policy. Although the current code places the @OneToOne annotation in the Insurance entity, logically this is a one-to-one relationship between Employee and Insurance, where each employee has at most one insurance record.
+
+3. **Insurance.java**
+The Insurance class represents an insurance policy held by an employee. This entity includes an id (marked with @Id and @Column(name="Insurance_id")) and a type field (marked with @Column(name="Insurance_type")) . The class uses a @OneToOne annotation to represent a one-to-one relationship with the Employee entity. This means that each insurance record is associated with exactly one employee, and each employee has one insurance record.
+
+4. **Project.java**
+The Project class models a business project within the company. It is a JPA entity containing the fields id (primary key), name, and totalcost. Projects are associated with employees through a many-to-many relationship, represented by @ManyToMany. This implies that one project can involve many employees, and one employee can participate in many different projects. In the Project class, this relationship is the owning side and does not use mappedBy, which allows it to define the join table for the connection between projects and employees.
+---
+
+# 💡 Code Structure
+
+```java
+package lk.vau.fas.ict.daysix.model;
+
+import java.sql.Date;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Department {
+    @Id
+    @Column(name="dept_id")
+    private int id;
+    @Column(nullable=false)
+    private String name;
+    private Date established;
+
+    @OneToMany(mappedBy="department")
+	private List<Employee>employees;
+}
+
+```
+```java
+package lk.vau.fas.ict.daysix.model;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Employee {
+    @Id
+    private String empNo;
+	private String name;
+	private int age;
+	private String gender;
+	private double salary;
+
+    @ManyToOne
+	private Department department;
+
+    @ManyToMany(mappedBy="employees")
+	private List<Project>projects;
+}
+
+```
+```java
+package lk.vau.fas.ict.daysix.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+@Entity
+public class Insurance {
+    @Id
+	@Column(name="Insurance_id")
+    private int id;
+    @Column(name="Insurance_type")
+    private String type;
+
+    @OneToOne
+	private Employee employees;
+}
+
+```
+```java
+package lk.vau.fas.ict.daysix.model;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+
+
+@Entity
+public class Project {
+    @Id
+    private int id;
+	private String name;
+	private long totalcost;
+
+    @ManyToMany
+	private List<Employee>employees;
+    
+}
+
+```
 ---
 
 # 🛠 Technologies
-- Spring Boot — framework to build Java applications easily.
+- Java 
 
-- Spring Data JPA — to interact with the database using Java objects (no need to write a lot of SQL).
+- Spring Boot 
 
-- Hibernate — JPA provider that handles mapping between Java classes and database tables.
+- Spring Data JPA
 
-- MySQL — the relational database you're connecting to.
+- MySQL 
 
-- JDBC (Java Database Connectivity) — standard Java API to connect to databases.
+- Hibernate ORM
 
-- MySQL Connector/J — the JDBC driver for MySQL databases.
+- Jakarta Persistence API
+
+- Maven (for dependency management)
+
+---
+
+# 🔑 Features
+- Manage Employee information (name, age, gender, salary, etc.)
+
+- Assign Employees to a Department
+
+- Assign multiple Employees to multiple Projects
+
+- Link each Employee with one Insurance policy
+
+- Handle relational data using JPA annotations
+
+- Automatically generate database schema (ddl-auto=create)
+
+- Modular and extensible entity structure
 
 ---
 
-# ✨ Features
-- Database Connectivity — connecting a Spring Boot app to a MySQL database.
+🔗 Entity Relationships
 
-- Entity-Relationship Mapping — mapping Java classes (entities) to database tables automatically.
-
-- Automatic Table Management — using spring.jpa.hibernate.ddl-auto=create, the app creates tables based on your entity classes every time it runs.
-
-- Configuration via application.properties — easily managing settings like database URL, username, password, driver class, etc.
-
-- Application Naming — setting a custom name for your Spring Boot application (spring.application.name=Question).
+| Entity     | Relationship Type | Target Entity | Description                                   |
+| ---------- | ----------------- | ------------- | --------------------------------------------- |
+| Department | One-to-Many       | Employee      | A department has many employees               |
+| Employee   | Many-to-One       | Department    | Each employee belongs to one department       |
+| Employee   | Many-to-Many      | Project       | Employees can work on multiple projects       |
+| Project    | Many-to-Many      | Employee      | Projects can have multiple employees          |
+| Employee   | One-to-One        | Insurance     | Each employee has one insurance policy        |
+| Insurance  | One-to-One        | Employee      | Each insurance policy belongs to one employee |
 
 ---
-## Outputs
+⚙️ Application Configuration
+```
+spring.application.name=daysix
+spring.datasource.url=jdbc:mysql://localhost:3306/employee
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=create
+```
+---
+🚀 How to Run
 
-![1](./dayseven/1.png)
-![2](./dayseven/2.png)
-![3](./dayseven/3.png)
-![4](./dayseven/4.png)
-![5](./dayseven/5.png)
-![6](./dayseven/6.png)
-![7](./dayseven/7.png)
-![8](./dayseven/8.png)
+1.Ensure MySQL server is running and a database named employee exists.
+
+2.Clone the repository.
+
+3.Open the project in your IDE (e.g., IntelliJ, Eclipse).
+
+4.Update application.properties with your DB credentials.
+
+5.Run the application using:
+```
+mvn spring-boot:run
+```
+
+## Output
+
+![1](./daysix/output.jpeg)
+
 
 
 
