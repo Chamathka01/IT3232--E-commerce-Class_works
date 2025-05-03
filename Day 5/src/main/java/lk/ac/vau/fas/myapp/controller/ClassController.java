@@ -1,3 +1,7 @@
+package lk.ac.vau.fas.ict.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import lk.ac.vau.fas.myapp.model.Course;
 
 @RestController
