@@ -1,9 +1,22 @@
-﻿# IT3232_Day-04_Spring-Boot
+﻿# IT3232_Day-05_Spring-Boot
 
-# Student Management API
+# Generic CRUD-Based Course Management System using Spring Boot
 
 ## 📖 Introduction
-This is a simple Spring Boot REST API for managing student records. It allows users to perform CRUD (Create, Read, Update, Delete) operations on student data using HTTP requests.
+This Java Spring Boot application provides a RESTful API to manage Course information using a generic CRUD controller. The system is designed to perform basic Create, Read, Update, and Delete (CRUD) operations on Course objects stored in memory using a HashMap.
+
+The architecture uses a generic base controller (CRUDController<K, T>) to define common CRUD methods, which can be reused for different models. The ClassController extends this base controller and provides a concrete implementation for the Course model.
+
+The Course class represents a simple data model with fields for course code, name, and credits. Three sample courses are added to the system to simulate existing data.
+
+This application is ideal for learning how to:
+
+- Create reusable REST controllers using generics.
+
+- Build simple APIs using Spring Boot.
+
+- Manage in-memory data without using a database.
+
 
 ---
 
@@ -11,60 +24,32 @@ This is a simple Spring Boot REST API for managing student records. It allows us
 
 ```java
 package lk.ac.vau.fas.myapp.model;
-
-public class Student {
-    private String regNo;
+public class Course {
+    private String code;
 	private String name;
-	private int age;
-	private String course;
-	private double gpa;
-
-    public Student(String regNo, String name, int age, String course, double gpa) {
-        this.regNo = regNo;
+	private String credits;
+    public Course(String code, String name, String credits) {
+        this.code = code;
         this.name = name;
-        this.age = age;
-        this.course = course;
-        this.gpa = gpa;
+        this.credits = credits;
     }
-
-    public String getRegNo() {
-        return regNo;
+    public String getCode() {
+        return code;
     }
-
-    public void setRegNo(String regNo) {
-        this.regNo = regNo;
+    public void setCode(String code) {
+        this.code = code;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getAge() {
-        return age;
+    public String getCredits() {
+        return credits;
     }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public double getGpa() {
-        return gpa;
-    }
-
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
+    public void setCredits(String credits) {
+        this.credits = credits;
     }
 }
 
@@ -74,12 +59,24 @@ package lk.ac.vau.fas.myapp.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import lk.ac.vau.fas.myapp.model.Course;
 
-import lk.ac.vau.fas.myapp.model.Student;
+@RestController
+@RequestMapping("/course")
+public class ClassController extends CRUDController<String, Course>  {
+    Course ecommerce = new Course("IT3232","E-Commerce",2);
+    Course webappservice = new Course("IT2234","Web Service And Server Technology",4);
+    Course webapplication = new Course("CSC3132","Web Application Development",2);
 
-import java.util.ArrayList;
+    getMap().put(ecommerce.getCode(), ecommerce);
+    getMap().put(webappservice.getCode(),webappservice);
+    getMap().put(webapplication.getCode(),webapplication);
+
+}
+```
+```java
+package lk.ac.vau.fas.myapp.controller;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -89,87 +86,74 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+public class CRUDController<K,T> {
+    private Map<K, T> object = new HashMap<K,T>();
+	
+	public Map<K,T> getMap()
+	{
+		return object;
+	}
 
-@RestController
-@RequestMapping("/app")
-public class AppController {
+    //get All 
+	@GetMapping("/")
+	public Map<K, T> getAll()
+	{
+		return object;
+	}
 
-    Student Bob = new Student("2020IT01","Bob Marely",23,"IT",3.2);
-	Student Amal = new Student("2020IT02","Amal Perera",24,"AMC",3.7);
-	Student Nimal = new Student("2020IT03","Nimal Hettiarachchi",22,"IT",3.0);
-    private static List<Student> students = new ArrayList<Student>();
-    private Map<String, Student> mstudents = new HashMap<String,Student>();
-
-    public AppController() {
-        students.add(Bob);
-        students.add(Amal);
-        students.add(Nimal);
-
-        mstudents.put(Bob.getRegNo(),Bob);
-		mstudents.put(Amal.getRegNo(),Amal);
-		mstudents.put(Nimal.getRegNo(),Nimal);
+    //Add new object
+	@PostMapping("/add/{id}")
+    public String addNew(@RequestBody T objects, @PathVariable("id") K id) {
+        this.object.put(id, objects);
+        return "Added new object";
     }
 
-
-    public Map<String,Student> getStudents(){
-		return mstudents;
+    //delete
+	@DeleteMapping("/delete/{id}")
+	public String DeleteOne(@PathVariable("id") K id)
+	{
+		if(object.get(id) != null)
+		{
+			object.remove(id);
+			return "The Details are Deleted";
+		}
+		return "404 couldn't find the object";
+		
 	}
-    //find a student from the list by regno
-    @GetMapping("/student/{id}")
-	public Student getStudent(@PathVariable("id") String regno) {
-        return mstudents.get(regno);
-		//return null;
+
+    //update 
+	@PutMapping("/update/{id}")
+    public String updateOne(@PathVariable("id") K id, @RequestBody T objects) 
+	{
+		 if(this.object.get(id) != null)
+		 {
+            this.object.put(id, objects);
+            return "The details are updated";
+        }
+        return "404 couldn't find the object";
     }
-    //Add a new Student
-	@PostMapping("/add")
-	public String addStudent(@RequestBody Student student) {
-		mstudents.put(student.getRegNo(),student);
-		return "New syudent added";
-	}
-
-    //Delete the student
-	@DeleteMapping("/student/{id}")
-	public String DeleteStudent(@PathVariable("id") String regno) {
-		if(mstudents.remove(regno)!=null) {
-			mstudents.remove(regno);
-			return "The student removed";
-		}
-		return "404 coudn't find the student";
-	}
-
-    //Update the student
-	@PutMapping("/student/{id}")
-	public String UpdateStudent(@PathVariable("id") String regno, @RequestBody Student student) {
-		if(mstudents.get(regno)!=null) {
-			mstudents.put(student.getRegNo(),student);
-			return "The student details are updated";
-		}
-		return "404 coudn't find the student";
-	}
     
 }
+
 ```
 ## 📂 API Endpoints
 
-| Method | Endpoint               | Description                         |
-|--------|------------------------|-------------------------------------|
-| GET    | `/app/student/{id}`    | Get student by registration number  |
-| POST   | `/app/add`             | Add a new student                   |
-| DELETE | `/app/student/{id}`    | Delete a student                    |
-| PUT    | `/app/student/{id}`    | Update a student                    |
+| Method | Endpoint               | Description         |
+|--------|------------------------|---------------------|
+|GET     | `course/`              | Get all courses     |
+|POST    | `course/add/{id}`      | Add a new course    |
+|DELETE  | `course/delete/{id}`   | Delete a course     |
+|PUT     | `course/update/{id}`   | Update a course     |
 
 ---
 
 ## 📝 Code Explanation 
-- @RestController: Tells Spring Boot that this class will handle REST API requests.
+1. **ClassController**: Manages course-related operations
 
-- @RequestMapping("/app"): All the API URLs in this class will start with /app.
+2. **CRUDController**: A generic controller providing basic CRUD operations.
 
-- @RequestBody:Take the data from the body of the HTTP request and convert it into a Java object. 
+3. **Course**: This code defines a Course class in Java with three attributes—code, name, and credits—along with a constructor and getter/setter methods to manage course details.
 
-- students: A list to hold student objects.
-
-- mstudents: A map (like a dictionary) that stores students with the registration number as the key.
 
 ---
 
@@ -177,7 +161,10 @@ public class AppController {
 
 - **Java** (JDK 8+)
 - **Spring Boot** (Web Dependency)
+- **Spring Web** (Spring MVC)
+- **Java Generics**(reusable CRUDController<K, T>)
 - **Maven** (for project build)
+- **Collections** (HashMap)
 - **REST API** (via Spring MVC annotations)
 
 ---
@@ -185,25 +172,24 @@ public class AppController {
 
 ## 🚀 Features
 
-- Retrieve a specific student by registration number
-- Add a new student
-- Delete a student by registration number
-- Update student details
-- Preloaded list of students on application start
+- Generic Controller:Reusable CRUD logic for any object type
+- RESTful API:Follows standard HTTP verbs and endpoints
+- Course Model:Represents course data with fields and accessors
+- Simple Map-based Storage:In-memory storage using HashMap
 
 ---
 ## Outputs
 
-### 1. Get student by registration number
-![id](./id.png)
+### 1. Get all courses
+![all](./id.png)
 
-### 2. Add a new student
+### 2. Add a course
 ![add](./add.png)
 
-### 3. Delete a student
+### 3. Delete a course
 ![delete](./delete.png)
 
-### 4. Update a student
+### 4. Update a course
 ![update](./update.png)
 
 
