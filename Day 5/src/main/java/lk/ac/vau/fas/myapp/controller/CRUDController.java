@@ -15,5 +15,12 @@ public class CRUDController<K,T> {
 	{
 		return object;
 	}
+
+    //Add new object
+	@PostMapping("/add/{id}")
+    public String addNew(@RequestBody T objects, @PathVariable("id") K id) {
+        this.object.put(id, objects);
+        return "Added new object";
+    }
     
 }
