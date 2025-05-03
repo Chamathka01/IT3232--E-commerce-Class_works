@@ -220,7 +220,8 @@ mvn spring-boot:run
 
 ## Output
 
-![1](./daysix/output.jpeg)
+![1](./daysix/first.png)
+![2](./daysix/second.png)
 
 
 
