@@ -8,5 +8,12 @@ public class CRUDController<K,T> {
 	{
 		return object;
 	}
+
+    //get All 
+	@GetMapping("/")
+	public Map<K, T> getAll()
+	{
+		return object;
+	}
     
 }
