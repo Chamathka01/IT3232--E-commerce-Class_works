@@ -42,18 +42,14 @@ each table.
 ---
 ## Outputs
 
-<<<<<<< HEAD
 ![1](./dayseven/1.png)
-=======
-![a](./1.png)
->>>>>>> 1ad7137bb67d6212a5c81fd45ba6054ee5ab4fab
-![b](./2.png)
-![c](./3.png)
-![d](./4.png)
-![e](./5.png)
-![f](./6.png)
-![g](./7.png)
-![h](./8.png)
+![2](./dayseven/2.png)
+![3](./dayseven/3.png)
+![4](./dayseven/4.pngg)
+![5](./dayseven/5.png)
+![6](./dayseven/6.png)
+![7](./dayseven/7.png)
+![8](./dayseven/8.png)
 
 
 
