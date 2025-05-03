@@ -22,5 +22,18 @@ public class CRUDController<K,T> {
         this.object.put(id, objects);
         return "Added new object";
     }
+
+    //delete
+	@DeleteMapping("/delete/{id}")
+	public String DeleteOne(@PathVariable("id") K id)
+	{
+		if(object.get(id) != null)
+		{
+			object.remove(id);
+			return "The Details are Deleted";
+		}
+		return "404 couldn't find the object";
+		
+	}
     
 }
