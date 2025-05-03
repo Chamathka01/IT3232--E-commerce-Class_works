@@ -1,42 +1,31 @@
 package lk.ac.vau.fas.myapp.model;
 public class Course {
-    private String courseId;
-	private String courseName;
-	private String lecName;
-
-    public Course(String courseId, String courseName, String lecName) {
-        this.courseId = courseId;
-        this.courseName = courseName;
-        this.lecName = lecName;
+    private String code;
+	private String name;
+	private String credits;
+    public Course(String code, String name, String credits) {
+        this.code = code;
+        this.name = name;
+        this.credits = credits;
+    }
+    public String getCode() {
+        return code;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getCredits() {
+        return credits;
+    }
+    public void setCredits(String credits) {
+        this.credits = credits;
     }
 
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public String getLecName() {
-        return lecName;
-    }
-
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public void setLecName(String lecName) {
-        this.lecName = lecName;
-    }
-
-    
-
-
-
-    
+      
 }
