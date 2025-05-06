@@ -1,19 +1,34 @@
-# IT3232_Day-07_Spring-Boot
+# IT3232_Day-08-ICA 01_Spring-Boot
 
-# University Management System
+# Canteen Management System
 
-# 📝 Question
-The University of Vavuniya administration needs a workshop management system to manage the events efficiently. The technical requirement committee decided to use Spring Boot and  MySQL for the system development. The system has been divided into components and assigned to each 3rd year IT student. 
-You have been assigned to a task “Model Building”. The following requirements are given to create proper models and, migrate them to a database using proper ORM techniques. 
+## 📝 Question
 
-” The university is arranging many workshops for undergraduates and postgraduates. A workshop contains many presentation sessions done by experts in the field. A session can be presented by many experts. An expert can present for multiple sessions. Mostly, graduates participate in many sessions of the workshops. A sample data file is given to have more understanding of the attributes and data types.”
+University Vavuniya wants to build a Smart Canteen Management System using Spring Boot. 
+The system must manage multiple canteens, each located in different parts of the campus. 
+The university maintains a list of foods which can only be sold at the canteen. Each food item 
+has a name, price, and weight.  Each canteen offers a daily menu that includes several food 
+items, where a single food item can appear on menus in different canteens on different days. 
 
-After the migration, take a backup of the generated database and display the description of 
-each table.
+
+The university has students and employees, both of whom have common details such as ID, 
+name, age, and gender. Employees have additional attributes like their job position, and 
+students include their academic degree. Employees can be associated with multiple canteens, 
+while each student can place food orders. Every food order can include multiple order lines, 
+and each line refers to a specific food item from the daily menu, along with the quantity. A 
+student may place multiple orders over time, and each order must store the date it was placed. 
+
+
+1) The following requirements are given to create proper models, implement the 
+necessary relationships between the entity classes based on the provided scenario, 
+and migrate them as a database using proper ORM techniques. 
+
+2) After the migration, take a backup of the generated database and display the 
+description of each table.  
 
 ---
 
-# 🛠 Technologies
+## 🛠 Technologies
 - Spring Boot — framework to build Java applications easily.
 
 - Spring Data JPA — to interact with the database using Java objects (no need to write a lot of SQL).
@@ -28,7 +43,7 @@ each table.
 
 ---
 
-# ✨ Features
+## ✨ Features
 - Database Connectivity — connecting a Spring Boot app to a MySQL database.
 
 - Entity-Relationship Mapping — mapping Java classes (entities) to database tables automatically.
@@ -37,19 +52,21 @@ each table.
 
 - Configuration via application.properties — easily managing settings like database URL, username, password, driver class, etc.
 
-- Application Naming — setting a custom name for your Spring Boot application (spring.application.name=Question).
+- Application Naming — setting a custom name for your Spring Boot application (spring.application.name=dayeight).
 
 ---
 ## Outputs
 
-![1](./dayseven/1.png)
-![2](./dayseven/2.png)
-![3](./dayseven/3.png)
-![4](./dayseven/4.png)
-![5](./dayseven/5.png)
-![6](./dayseven/6.png)
-![7](./dayseven/7.png)
-![8](./dayseven/8.png)
+![1](./dayeight/outputs/1.png)
+![2](./dayeight/outputs/2.png)
+![3](./dayeight/outputs/3.png)
+![4](./dayeight/outputs/4.png)
+![5](./dayeight/outputs/5.png)
+![6](./dayeight/outputs/6.png)
+![7](./dayeight/outputs/7.png)
+![8](./dayeight/outputs/8.png)
+![9](./dayeight/outputs/9.png)
+![10](./dayeight/outputs/10.png)
 
 
 
