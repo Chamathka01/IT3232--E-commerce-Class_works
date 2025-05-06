@@ -1,4 +1,4 @@
-package lk.vau.fas.icae.model;
+package lk.vau.fas.ict.dayeight.model;
 
 import java.util.List;
 
