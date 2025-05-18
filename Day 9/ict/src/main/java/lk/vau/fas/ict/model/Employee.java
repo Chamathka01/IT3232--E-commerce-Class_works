@@ -2,10 +2,13 @@ package lk.vau.fas.ict.model;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class Employee {
     @Id
@@ -15,6 +18,9 @@ public class Employee {
     private String Job;
     private double Salary;
     private Date DOB;
+
+    @ManyToOne
+    @JsonBackReference
     private Department department;
 
     public Employee() {}
