@@ -1,6 +1,6 @@
 # Day 9
 
-#  🔖 ICT Department Management System
+#  🔖 Department Management System
 
 This is a simple Spring Boot application for managing departments and employees in an organization. It uses Spring Data JPA with a MySQL database.
 
