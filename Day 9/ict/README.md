@@ -345,13 +345,31 @@ DELETE /dept/{id}
 
 ## Outputs
 
+01. Get All Departments
+
 ![1](./screenshots/getall.png)
+
+02. Get Department by ID
 
 ![2](./screenshots/getbyid.png)
 
+03.  Add a New Department
+
 ![3](./screenshots/add.png)
+
+04. Update Department
 
 ![4](./screenshots/update.png)
 
+05. Delete Department
+
 ![5](./screenshots/delete.png)
+
+
+
+
+
+
+
+
 
