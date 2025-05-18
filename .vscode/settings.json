@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "Day 7/dayseven/src/main/java"
-    ]
+        "Day 9/ict/src/main/java"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }
