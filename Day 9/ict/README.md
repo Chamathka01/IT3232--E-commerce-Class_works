@@ -342,3 +342,16 @@ DELETE /dept/{id}
 
 ```
 
+
+## Outputs
+
+![1](./screenshots/getall.png)
+
+![2](./screenshots/getbyid.png)
+
+![3](./screenshots/add.png)
+
+![4](./screenshots/update.png)
+
+![5](./screenshots/delete.png)
+
