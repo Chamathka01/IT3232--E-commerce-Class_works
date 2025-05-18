@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import lk.vau.fas.ict.model.Department;
 
 @Repository
-public class DepartmentRepo extends JpaRepository<Department,Integer> {
+public interface DepartmentRepo extends JpaRepository<Department,Integer> {
 
 }
 

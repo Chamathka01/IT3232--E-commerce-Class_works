@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import lk.vau.fas.ict.model.Department;
 import lk.vau.fas.ict.repo.DepartmentRepo;
 
+@Service
 public class DepartmentService {
     @Autowired
     private DepartmentRepo repo;
