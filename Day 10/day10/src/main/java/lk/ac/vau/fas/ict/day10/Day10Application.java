@@ -1,13 +1,13 @@
-package lk.vau.fas.ict;
+package lk.ac.vau.fas.ict.day10;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IctApplication {
+public class Day10Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IctApplication.class, args);
+		SpringApplication.run(Day10Application.class, args);
 	}
 
 }

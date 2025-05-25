@@ -1,10 +1,10 @@
-package lk.vau.fas.ict;
+package lk.ac.vau.fas.ict.day10;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IctApplicationTests {
+class Day10ApplicationTests {
 
 	@Test
 	void contextLoads() {
