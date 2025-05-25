@@ -27,4 +27,13 @@ public class DepartmentService {
 		return repo.findById(id).get();
 	}
 
+	public String addDept(Department department) {
+		//before adding a department make sure that the department id is unique
+		if(repo.findById(department.getId()).isPresent()){
+			throw new DuplicateKeyException("The department id is already available");
+		}
+		repo.save(department);
+		return "New department added";
+	}
+
 }
