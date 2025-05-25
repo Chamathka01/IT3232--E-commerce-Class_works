@@ -20,9 +20,9 @@ public class DepartmentService {
 		return repo.findAll();
 	}
 
-    public Department getDept(@PathVariable("id") int id) {
+    public Department getDept( int id) {
 		if(repo.findById(id).isEmpty()) {
-			return null;
+			throw new EntityNotFoundException("Department Not Found");
 		}
 		return repo.findById(id).get();
 	}
