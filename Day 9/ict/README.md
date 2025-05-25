@@ -186,7 +186,7 @@ public class Employee {
 ##  📁 Controllers
 
 01. DepartmertController.java
-```
+```java
 package lk.vau.fas.ict.controller;
 
 import java.util.List;
@@ -258,7 +258,7 @@ public class DepartmentController {
 ## 📚 Repositories
 
 01.DepartmentRepo.java
-```
+```java
 package lk.vau.fas.ict.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -276,7 +276,7 @@ public interface DepartmentRepo extends JpaRepository<Department,Integer> {
 ## 🧠 Service
 
 01. DepartmentService.java
-```
+```java
 package lk.vau.fas.ict.service;
 
 import java.util.List;
