@@ -3,10 +3,10 @@ package lk.vau.fas.ict.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import jakarta.persistence.EntityNotFoundException;
 import lk.vau.fas.ict.model.Department;
 import lk.vau.fas.ict.repo.DepartmentRepo;
 
@@ -28,7 +28,6 @@ public class DepartmentService {
 	}
 
 	public String addDept(Department department) {
-		//before adding a department make sure that the department id is unique
 		if(repo.findById(department.getId()).isPresent()){
 			throw new DuplicateKeyException("The department id is already available");
 		}
