@@ -554,7 +554,7 @@ public interface EmployeeRepo extends JpaRepository<Employee, String> {
 
 ```
 
-## 🔍 exceptinHandler
+## 🔍 exceptionHandler
 
 01. GenericExceptionHandler.java
 ```java
@@ -600,52 +600,52 @@ public class GenericExceptionHandler {
 
 01. DepartmentController
 
-GET /dept – Get all departments
+- GET /dept – Get all departments
 
-GET /dept/{id} – Get department by ID
+- GET /dept/{id} – Get department by ID
 
-POST /dept – Add new department
+- POST /dept – Add new department
 
-GET /dept/names – Get all department names
+- GET /dept/names – Get all department names
 
-GET /dept/search/{name} – Search departments by name
+- GET /dept/search/{name} – Search departments by name
 
-GET /dept/empcount/{id} – Get employee count for department
+- GET /dept/empcount/{id} – Get employee count for department
 
-GET /dept/vempcount/{id} – Get detailed view with employee count
+- GET /dept/vempcount/{id} – Get detailed view with employee count
 
 02. EmployeeController
 
-GET /emp/salary/{min}/{max} – Get employees within a salary range
+- GET /emp/salary/{min}/{max} – Get employees within a salary range
 
 ## Outputs
 
 01. DepartmentController
 
-GET /dept – Get all departments
+- GET /dept – Get all departments
 ![1](./screenshots/getall.png)
 
-GET /dept/{id} – Get department by ID
+- GET /dept/{id} – Get department by ID
 ![2](./screenshots/getdepartment.png)
 
-POST /dept – Add new department
+- POST /dept – Add new department
 ![3](./screenshots/adddept.png)
 
-GET /dept/names – Get all department names
+- GET /dept/names – Get all department names
 ![4](./screenshots/alldeptnames.png)
 
-GET /dept/search/{name} – Search departments by name
+- GET /dept/search/{name} – Search departments by name
 ![5](./screenshots/searchdeptname.png)
 
-GET /dept/empcount/{id} – Get employee count for department
+- GET /dept/empcount/{id} – Get employee count for department
 ![6](./screenshots/getempcount.png)
 
-GET /dept/vempcount/{id} – Get detailed view with employee count
+- GET /dept/vempcount/{id} – Get detailed view with employee count
 ![7](./screenshots/getviewempcount.png)
 
 02. EmployeeController
 
-GET /emp/salary/{min}/{max} – Get employees within a salary range
+- GET /emp/salary/{min}/{max} – Get employees within a salary range
 ![1](./screenshots/getempsalary.png)
 
 
