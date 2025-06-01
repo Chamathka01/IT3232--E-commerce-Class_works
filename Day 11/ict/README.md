@@ -646,7 +646,7 @@ public class GenericExceptionHandler {
 02. EmployeeController
 
 - GET /emp/salary/{min}/{max} – Get employees within a salary range
-![1](./screenshots/getempsalary.png)
+![8](./screenshots/getempsalary.png)
 
 
 ## 🧠 Key Classes Explained
