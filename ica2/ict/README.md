@@ -706,6 +706,7 @@ INSERT INTO borrow (id, book_id, student_id, borrow_date, return_date, returned)
 
 ## Outputs
 - Sample MySQL
+
 ![1](./screenshots/1.png)
 
 ![2](./screenshots/2.png)
@@ -725,6 +726,7 @@ INSERT INTO borrow (id, book_id, student_id, borrow_date, return_date, returned)
 
 - Error Handling
 ![8](./screenshots/8.png)
+
 ![9](./screenshots/9.png)
 
 ## 🧠 Key Classes Explained
