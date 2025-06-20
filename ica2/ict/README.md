@@ -1,4 +1,4 @@
-#  Library Management System
+# 📚 Library Management System
 
 Scenario: 
 
@@ -737,7 +737,6 @@ INSERT INTO borrow (id, book_id, student_id, borrow_date, return_date, returned)
 - **ErrorResponce.java**: A custom error response model to standardize error messages
 
 - **BookService.java**: Contains logic to fetch books by genre with error handling.
-- **BorrowService.java**: Validates and processes borrowing logic (e.g., copy availability, student limits).
 - **BorrowService.java**: Validates and processes borrowing logic (e.g., copy availability, student limits).
 - **StudentService.java**: Provides logic to fetch students based on book borrow history.
 
