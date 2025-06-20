@@ -706,7 +706,7 @@ INSERT INTO borrow (id, book_id, student_id, borrow_date, return_date, returned)
 
 ## Outputs
 - Sample MySQL
-![1](./screenshots/1.png)
+![1](./ica2/ict/screenshots/1.png)
 
 ![2](./screenshots/2.png)
 
